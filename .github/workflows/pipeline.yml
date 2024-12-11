@@ -38,3 +38,27 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: "patch"
+  discord_success:
+    if: ${{ success() }}
+    needs: [simple_deployment_pipeline]
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Success with deployment
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+          severity: info
+          details: Deployment Succeeded!
+          webhook_url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+  discord_failure:
+    if: ${{ failure() }}
+    needs: [simple_deployment_pipeline]
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Error with building
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+          severity: error
+          details: Building failed!
+          webhook_url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+
+
