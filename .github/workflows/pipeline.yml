@@ -25,4 +25,5 @@ jobs:
       - name: Test
         run: npm run test
       - name: Trigger deployment
+        if: ${{ github.event_name == 'push' }}
         run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
