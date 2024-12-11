@@ -23,8 +23,6 @@ const App = () => {
     return <ErrorMessage error={error} />
   }
 
-  //comment
-
   let next = null
   let previous = null
 
