@@ -13,3 +13,6 @@ Start by running `npm install` inside the project folder
 `npm run eslint` to run eslint
 `npm run build` to make a production build
 `npm run start-prod` to run your production build
+
+
+[Link to exercise "11.20 Your own pipeline" repository](https://github.com/johyy/fullstack_osa3)
